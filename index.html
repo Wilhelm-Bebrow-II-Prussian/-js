@@ -1,156 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Document</title>
-</head>
+	<title></title>
 	<style type="text/css">
-		.vopr-1{
-			height: 800px;
-			width: 1000px;
-			background: red;
+		.enemy{
+			margin-top: 100px;
+			text-align:center;
+			height: 250px;
+		}
+		.player_img{
+			width:200px;
+			height: 300px;
 			margin-left: auto;
 			margin-right: auto;
-			border-radius: 40px;
-		}
+			background-size: 100% 100%;
+			position: relative;
+			transition: 1s;
 
-		.vopr-2{
-			height: 800px;
-			width: 1000px;
-			background: red;
+		}
+		.enemy_img{
+			width:200px;
+			height: 300px;
 			margin-left: auto;
 			margin-right: auto;
-			border-radius: 40px;
-			display: none;
+			background-size: 100% 100%;
+			position: relative;
+			transition: 1s;
+
 		}
+		.player{
+			text-align: center;
+			height: 250px;
+			margin-top: 150px;
 
-		.vopr-3{
-			height: 800px;
-			width: 1000px;
-			background: red;
-			margin-left: auto;
-			margin-right: auto;
-			border-radius: 40px;
-			display: none;
 		}
+		.player_property{
+			position: absolute;
+			top:80%;
 
 
-
-		.otv{
-			height: 100px; 
-			width: 200px;
-			background: green;
-			margin-left: 10px;
-			border-radius: 10px;
 		}
-
-		.img{
-			height: 100%;
-			width: 100%;
+		.enemy_name{
+			color: white; font-family: Arial;
+		}
+		.player_name{
+			color: white; font-family: Arial
 		}
 	</style>
-<body>
+</head>
+<body style="background-image: url(images/bg.jpg); background-size: 100% ">
 
+	<div class="enemy">
+		<h1 class="enemy_name"></h1>
 
+		<div class="enemy_img">
+			<h2 class="enemy_hp player_property" style="left: 10%;">0</h2>
+			<h2 class="enemy_damage player_property" style="left: 82%;">0</h2>
+		</div>	
 
+	</div>
 
-<div class="vopr-1">
-			
-		<div style="margin-left: 100px; margin-right: 100px;"><img src="csgo.jpg" class="img"></div>
-
-			<div style="display: flex; margin-left: 200px;">
-	<div class="otv click-1-1"><h1>Bubble Kvas</h1></div>
-	<div class="otv click-1-2"><h1>CS:GO</h1></div>
-	<div class="otv click-1-3"><h1>Dota 2</h1></div>
-		   </div>
-</div>
-
-
-
-
-
-
-<div class="vopr-2">
-	<div style="margin-left: 100px; margin-right: 100px;"><img src="ssg.jpg" class="img"></div>
-
-		<div style="display: flex;margin-left: 200px;">
-	<div class="otv click-2-1"><h1>Desert Eagle</h1></div>
-	<div class="otv click-2-2"><h1>SSG</h1></div>
-	<div class="otv click-2-3"><h1>AWP</h1></div>
+	<div class="player">
+		<h1 class="player_name"></h1>
+		
+		<div class="player_img">
+			<h2 class="player_hp player_property" style="left: 10%;">0</h2>
+			<h2 class="player_damage player_property" style="left: 82%;">0</h2>
 		</div>
-</div>
+
+	</div>
+
+	<script type="text/javascript">
+		let enemy_hp = document.querySelector(".enemy_hp");
+		let player_hp = document.querySelector(".player_hp");
+
+		let player_damage = document.querySelector(".player_damage");
+		let enemy_damage = document.querySelector(".enemy_damage");
+
+		let player_name = document.querySelector(".player_name");
+		let enemy_name = document.querySelector(".enemy_name");
+
+		let player_img = document.querySelector(".player_img");
+		let enemy_img = document.querySelector(".enemy_img");
 
 
+		function getRandom(number){
+   			let n = Math.random();
+       		let big = n * number;
+      		let index = Math.round(big);
+   }
 
 
+   		function player(){
+   			let index = getRandom(10);
+   		}
 
+   		function enemy(){
+   			let index = getRandom(10);
+   			enemy_hp = index
+   		}
 
-<div class="vopr-3">
-	<div style="margin-left: 100px; margin-right: 100px;"><img src="maxresdefault.jpg" class="img"></div>
+		let player = {
+		name : "Игрок",
+		url : "url(1.png)",
+		hp : index,
+		dmg : index
+	}
 
-		<div style="display: flex; margin-left: 200px;">
-	<div class="otv click-3-1"><h1>Terraria</h1></div>
-	<div class="otv click-3-2"><h1>Don't Starve</h1></div>
-	<div class="otv click-3-3"><h1>Minecraft</h1></div>
-		</div>
-</div>
+		let enemy = {
+		name : "Враг",
+		url : "url(2.png)",
+		hp : index,
+		dmg : index
+	}
 
+		player_img.style.backgroundImage = player.url;
+		enemy_img.style.backgroundImage = enemy.url;
 
+		player_name.innerHTML = player.name;
+		enemy_name.innerHTML = enemy.name;
 
+		player_damage.innerHTML = player.dmg;
+		enemy_damage.innerHTML = enemy.dmg;
 
-	<script>
-		document.querySelector(".click-1-1").onclick = function(){
-			alert("Непрваильно, попробуй еще. раз!");
-		}
+		player_hp.innerHTML = player.hp;
+		enemy_hp.innerHTML = enemy_hp;
 
+		function attack(){
+			player.hp = player.hp - enemy.dmg;
+			enemy_hp.innerHTML = enemy.hp;
+			alert("Атака началась")
+			if (hp_e < 0){
 
-		document.querySelector(".click-1-2").onclick = function(){
-			alert("Молодчинка!");
-			document.querySelector(".vopr-1").style.display = "none";
-			document.querySelector(".vopr-2").style.display = "block";
 			}
+	}
 
-
-		document.querySelector(".click-1-3").onclick = function(){
-			alert("Непрваильно, попробуй еще. раз!");
-		}
-
+		setTimeout( attack, 5000);
 
 
 
 
-
-		document.querySelector(".click-2-1").onclick = function(){
-			alert("Непрваильно, попробуй еще. раз!");
-		}
-
-
-		document.querySelector(".click-2-2").onclick = function(){
-			alert("Молодчинка!");
-			document.querySelector(".vopr-2").style.display = "none";
-			document.querySelector(".vopr-3").style.display = "block";
-			}
-
-
-		document.querySelector(".click-2-3").onclick = function(){
-			alert("Непрваильно, попробуй еще. раз!");
-		}
-
-
-
-
-		document.querySelector(".click-3-1").onclick = function(){
-			alert("Непрваильно, попробуй еще. раз!");
-		}
-
-
-		document.querySelector(".click-3-3").onclick = function(){
-			alert("Молодчинка!");
-			}
-
-
-		document.querySelector(".click-3-2").onclick = function(){
-			alert("Непрваильно, попробуй еще. раз!");
-		}
+	
 	</script>
 </body>
 </html>
